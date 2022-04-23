@@ -17,7 +17,7 @@ const EventCard = () => {
         <div className="event-cards">
             {events?.length === 0 ? (<h2>'There are no events yet!'</h2>) : 
             (
-                events?.map((event, index) => {
+                events.map((event, index) => {
                     const { id, name, image, location, description } = event;
                     return (
                         <div key={index} className="event-card">

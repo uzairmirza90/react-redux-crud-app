@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { updateEvent } from "../../redux/actions/actions";
 import "../updateEvent/updateEvent.css";
+import Form from "../../components/Form";
 
 const UpdateEvent = () => {
     const navigate = useNavigate();
@@ -48,61 +49,19 @@ const UpdateEvent = () => {
 
         <div className="line"></div>
 
-        <div className="update-event-whole-card">
+        <Form 
+          eventName={eventName}
+          setEventName={setEventName}
+          eventLocation={eventLocation}
+          setEventLocation={setEventLocation}
+          eventDescription={eventDescription}
+          setEventDescription={setEventDescription}
+          eventImage={eventImage}
+          setEventImage={setEventImage}
+          editEvent={editEvent}
+        />
 
-          <form className="form">
-
-            <div className="form-field">
-              <label htmlFor="name">Event Name:</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                className="inputField"
-                value={eventName}
-                onChange={(e) => setEventName(e.target.value)}
-              />
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="location">Event Location:</label>
-              <input
-                type="text"
-                name="location"
-                id="location"
-                className="inputField"
-                value={eventLocation}
-                onChange={(e) => setEventLocation(e.target.value)}
-              />
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="description">Event Description:</label>
-              <input
-                type="text"
-                name="description"
-                id="description"
-                className="inputField"
-                value={eventDescription}
-                onChange={(e) => setEventDescription(e.target.value)}
-              />
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="image">Event Image Link:</label>
-              <input
-                type="text"
-                name="image"
-                id="image"
-                className="inputField"
-                value={eventImage}
-                onChange={(e) => setEventImage(e.target.value)}
-              />
-            </div>
-
-            <button type="submit" className="update-event-button" onClick={() => editEvent()}>Update</button>
-          </form>
-        </div>
+        <button type="submit" className="update-event-button" onClick={() => editEvent()}>Update</button> 
       </div>
     </div>
   );
