@@ -4,40 +4,41 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { updateEvent } from "../../redux/actions/actions";
 import "../updateEvent/updateEvent.css";
-import Form from "../../components/Form";
+import Form from "../../components/form/Form";
 
 const UpdateEvent = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
 
-    const getLocation = useLocation();
-    const { id, name, image, description, location } = getLocation.state || {};
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const [eventName, setEventName] = useState(name);
-    const [eventLocation, setEventLocation] = useState(location);
-    const [eventDescription, setEventDescription] = useState(description);
-    const [eventImage, setEventImage] = useState(image);
+  const getLocation = useLocation();
+  const { id, name, image, description, location } = getLocation.state || {};
 
-    const [event, setEvent] = useState(getLocation.state);
+  const [eventName, setEventName] = useState(name);
+  const [eventLocation, setEventLocation] = useState(location);
+  const [eventDescription, setEventDescription] = useState(description);
+  const [eventImage, setEventImage] = useState(image);
 
-
-    useEffect(() => {
-      setEvent({
-        id: id,
-        name: eventName,
-        location: eventLocation,
-        description: eventDescription,
-        image: eventImage,
-      });
-    }, [event]);
+  const [event, setEvent] = useState(getLocation.state);
 
 
-    const editEvent = () => {
-      dispatch(updateEvent(event));
-      navigate("/");
-    };
+  useEffect(() => {
+    setEvent({
+      id: id,
+      name: eventName,
+      location: eventLocation,
+      description: eventDescription,
+      image: eventImage,
+    });
+  }, [event]);
 
-    return (
+
+  const editEvent = () => {
+    dispatch(updateEvent(event));
+    navigate("/");
+  };
+
+  return (
     <div className="update-event-page">
       <Sidebar />
 
@@ -49,7 +50,7 @@ const UpdateEvent = () => {
 
         <div className="line"></div>
 
-        <Form 
+        <Form
           eventName={eventName}
           setEventName={setEventName}
           eventLocation={eventLocation}
@@ -61,7 +62,7 @@ const UpdateEvent = () => {
           editEvent={editEvent}
         />
 
-        <button type="submit" className="update-event-button" onClick={() => editEvent()}>Update</button> 
+        <button type="submit" className="update-event-button" onClick={() => editEvent()}>Update</button>
       </div>
     </div>
   );

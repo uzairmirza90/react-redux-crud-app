@@ -23,3 +23,12 @@
 .events{
     margin-bottom: 100px;
 }
+
+.event-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 70px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    justify-content: center;
+}

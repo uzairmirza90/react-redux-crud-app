@@ -4,15 +4,15 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "../eventDetails/eventDetails.css";
 
 const EventDetails = () => {
-    const getLocation = useLocation();
-    const { id, name, image, description, location } = getLocation.state;
+  const getLocation = useLocation();
+  const { id, name, image, description, location } = getLocation.state;
 
 
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-    return (
+  return (
     <div className="event-detail-page">
       <Sidebar />
       <div className="event-detail">
@@ -46,7 +46,7 @@ const EventDetails = () => {
             <p style={{ fontSize: "22px", fontWeight: "bolder" }}>
               Location: {location}
             </p>
-            
+
           </div>
         </div>
       </div>

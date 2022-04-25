@@ -1,15 +1,7 @@
 import React from 'react'
 
-const Form = ({
-    eventName, 
-    setEventName, 
-    eventLocation, 
-    setEventLocation, 
-    eventDescription, 
-    setEventDescription, 
-    eventImage, 
-    setEventImage,
-}) => {
+const Form = ({eventName, setEventName, eventLocation, setEventLocation, eventDescription, setEventDescription, 
+              eventImage, setEventImage }) => {
   return (
     <div className="add-new-event-whole-card">
 

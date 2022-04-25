@@ -5,11 +5,12 @@ import "../addEvent/addEvent.css";
 import { addEvent } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Form from "../../components/Form";
+import Form from "../../components/form/Form";
 
 const AddEvent = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
     const state = useSelector((state) => state.events)
 
     const [eventName, setEventName] = useState("");
