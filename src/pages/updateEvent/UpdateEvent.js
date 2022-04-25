@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import Sidebar from "../../components/sidebar/Sidebar";
 import { updateEvent } from "../../redux/actions/actions";
 import "../updateEvent/updateEvent.css";
 import Form from "../../components/form/Form";
@@ -12,25 +11,25 @@ const UpdateEvent = () => {
   const dispatch = useDispatch();
 
   const getLocation = useLocation();
-  const { id, name, image, description, location } = getLocation.state || {};
+  const { getEvent } = getLocation.state || {};
 
-  const [eventName, setEventName] = useState(name);
-  const [eventLocation, setEventLocation] = useState(location);
-  const [eventDescription, setEventDescription] = useState(description);
-  const [eventImage, setEventImage] = useState(image);
+  const [eventName, setEventName] = useState(getEvent.name);
+  const [eventLocation, setEventLocation] = useState(getEvent.location);
+  const [eventDescription, setEventDescription] = useState(getEvent.description);
+  const [eventImage, setEventImage] = useState(getEvent.image);
 
   const [event, setEvent] = useState(getLocation.state);
 
 
   useEffect(() => {
     setEvent({
-      id: id,
+      id: getEvent.id,
       name: eventName,
       location: eventLocation,
       description: eventDescription,
       image: eventImage,
     });
-  }, [event]);
+  }, [getEvent.id, eventName, eventDescription, eventImage, eventLocation]);
 
 
   const editEvent = () => {
@@ -40,7 +39,6 @@ const UpdateEvent = () => {
 
   return (
     <div className="update-event-page">
-      <Sidebar />
 
       <div className="update-event">
 

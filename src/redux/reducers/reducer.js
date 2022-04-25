@@ -53,18 +53,17 @@ export const reducer = (state = initialState, action) => {
             return filteredArray;
 
         case 'UPDATE_EVENT':
-            let newState = state.map((event) => event.id === action.payload.id
-                ?
-                {
-                    ...event,
+            let newState = state.filter((event) => event.id !== action.payload.id)
+            return [
+                {   
                     name: action.payload.name,
                     description: action.payload.description,
                     location: action.payload.location,
                     image: action.payload.image
-                }
-                :
-                event)
-            return newState
+                },
+                ...newState, 
+            ]
+               
 
         default:
             return state;

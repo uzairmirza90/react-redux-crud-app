@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Sidebar from "../../components/sidebar/Sidebar";
 import "../eventDetails/eventDetails.css";
 
 const EventDetails = () => {
   const getLocation = useLocation();
-  const { id, name, image, description, location } = getLocation.state;
+  const { getEvent } = getLocation.state;
 
 
   useEffect(() => {
@@ -14,7 +13,6 @@ const EventDetails = () => {
 
   return (
     <div className="event-detail-page">
-      <Sidebar />
       <div className="event-detail">
 
         <div className="event-detail-header">
@@ -26,25 +24,25 @@ const EventDetails = () => {
         <div className="event-details-whole-card">
 
           <div>
-            <img src={image} className="img" alt="eventimage"></img>
+            <img src={getEvent.image} className="img" alt="eventimage"></img>
           </div>
 
           <div className="details">
 
             <p style={{ fontSize: "22px", fontWeight: "bolder" }}>
-              Event No: {id}
+              Event No: {getEvent.id}
             </p>
 
             <p style={{ fontSize: "23px", fontWeight: "bolder" }}>
-              Name: {name}
+              Name: {getEvent.name}
             </p>
 
             <div>
-              <h3 style={{ marginBottom: "5px" }}>Description: {description}</h3>
+              <h3 style={{ marginBottom: "5px" }}>Description: {getEvent.description}</h3>
             </div>
 
             <p style={{ fontSize: "22px", fontWeight: "bolder" }}>
-              Location: {location}
+              Location: {getEvent.location}
             </p>
 
           </div>

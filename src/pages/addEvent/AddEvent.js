@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import Sidebar from "../../components/sidebar/Sidebar";
 import "../addEvent/addEvent.css";
 import { addEvent } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +28,7 @@ const AddEvent = () => {
         description: eventDescription,
         image: eventImage,
       });
-    }, [event]);
+    }, [eventName, eventImage, eventDescription, eventLocation, state]);
 
 
     const addNewEvent = () => {
@@ -43,7 +42,6 @@ const AddEvent = () => {
 
     return (
     <div className="add-new-event-page">
-      <Sidebar />
 
       <div className="add-new-event">
 
