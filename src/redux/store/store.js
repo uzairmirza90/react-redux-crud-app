@@ -1,3 +1,4 @@
+import { applyMiddleware } from "redux";
 import { createStore } from "redux";
 import { reducers } from '../index.js';
 

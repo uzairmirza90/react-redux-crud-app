@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { updateEvent } from "../../redux/actions/actions";
 import "../updateEvent/updateEvent.css";
-import Form from "../../components/Form";
+import Form from "../../components/form/Form";
 
 const UpdateEvent = () => {
     const navigate = useNavigate();

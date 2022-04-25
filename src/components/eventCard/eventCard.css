@@ -1,12 +1,3 @@
-.event-cards {
-    display: flex;
-    flex-direction: row;
-    gap: 70px;
-    flex-wrap: wrap;
-    margin-top: 40px;
-    justify-content: center;
-}
-
 .event-card {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,rgba(0, 0, 0, 0.22) 0px 10px 10px;
     display: flex;

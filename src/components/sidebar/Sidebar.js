@@ -4,6 +4,7 @@ import { faEquals, faCalendar, faCalendarPlus } from "@fortawesome/free-solid-sv
 import "../sidebar/sidebar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import EventCard from "../eventCard/EventCard";
 
 const Sidebar = () => {
     const allEvents = useSelector((state) => state.events);
