@@ -6,6 +6,8 @@ import AddEvent from './pages/addEvent/AddEvent';
 import PageNotFound from './pages/pageNotFound/PageNotFound';
 import UpdateEvent from './pages/updateEvent/UpdateEvent';
 import Sidebar from './components/sidebar/Sidebar';
+import Login from './pages/login/Login';
+import SignUp from './pages/signup/SignUp';
 
 function App() {
   const Layout = ({children}) => {
@@ -26,6 +28,8 @@ function App() {
         <Route path='/event-detail/:id' element={<EventDetails />} />
         <Route path='/add-new-event' element={<AddEvent />} />
         <Route path='/update-event/:id' element={<UpdateEvent />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<SignUp />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
       </Layout>

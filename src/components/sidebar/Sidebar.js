@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEquals, faCalendar, faCalendarPlus } from "@fortawesome/free-solid-svg-icons";
+import { faEquals, faCalendar, faCalendarPlus, faUser, faSignIn } from "@fortawesome/free-solid-svg-icons";
 import "../sidebar/sidebar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -31,6 +31,20 @@ const Sidebar = () => {
                 <Link to="/add-new-event" style={{ display: "flex", textDecoration: "none" }}>
                     <FontAwesomeIcon icon={faCalendarPlus} color="white" size="lg" />
                     <h4 className="page-heading">Add New Event</h4>
+                </Link>
+            </div>
+
+            <div className="page">
+                <Link to="/login" style={{ display: "flex", textDecoration: "none" }}>
+                    <FontAwesomeIcon icon={faSignIn} color="white" size="lg" />
+                    <h4 className="page-heading">Login</h4>
+                </Link>
+            </div>
+
+            <div className="page">
+                <Link to="/signup" style={{ display: "flex", textDecoration: "none" }}>
+                    <FontAwesomeIcon icon={faUser} color="white" size="lg" />
+                    <h4 className="page-heading">Sign Up</h4>
                 </Link>
             </div>
             
