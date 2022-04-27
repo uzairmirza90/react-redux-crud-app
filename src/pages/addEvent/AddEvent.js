@@ -5,39 +5,60 @@ import { addEvent } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Form from "../../components/form/Form";
+import { useReducer } from "react";
+
+
+const initialFormState = {
+  eventName: '',
+  eventLocation: '',
+  eventDescription: '',
+  eventImage: '',
+}
+
+
+const formReducer = (state, action) => {
+  switch(action.type){
+    case 'eventName':
+      return { ...state, eventName: action.payload}
+    case 'eventLocation':
+      return { ...state, eventLocation: action.payload}
+    case 'eventDescription':
+      return { ...state, eventDescription: action.payload}
+    case 'eventImage':
+      return { ...state, eventImage: action.payload}
+
+    default:
+      return state;
+  }
+}
 
 const AddEvent = () => {
+
+    const [formState, dispatchEvent] = useReducer(formReducer, initialFormState)
+   
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
     const state = useSelector((state) => state.events)
 
-    const [eventName, setEventName] = useState("");
-    const [eventLocation, setEventLocation] = useState("");
-    const [eventDescription, setEventDescription] = useState("");
-    const [eventImage, setEventImage] = useState("");
-
-    const [event, setEvent] = useState({});
+    const [event, setEvent] = useState(formState);
 
 
     useEffect(() => {
       setEvent({
         id: state.length > 0 ? state[state.length - 1].id + 1 : 0,
-        name: eventName,
-        location: eventLocation,
-        description: eventDescription,
-        image: eventImage,
+        name: formState.eventName,
+        location: formState.eventLocation,
+        description: formState.eventDescription,
+        image: formState.eventImage,
       });
-    }, [eventName, eventImage, eventDescription, eventLocation, state]);
+
+    }, [formState.eventName, formState.eventImage, formState.eventDescription, formState.eventLocation, state]);
 
 
     const addNewEvent = () => {
-      if (eventName === "" || eventLocation === "" || eventDescription === "" || eventImage === "") {
-        alert("Please Enter All Fields !!!");
-      } else {
         dispatch(addEvent(event));
         navigate("/");
-      }
     };
 
     return (
@@ -51,16 +72,13 @@ const AddEvent = () => {
 
         <div className="line"></div>
 
+
         <Form 
-          eventName={eventName}
-          setEventName={setEventName}
-          eventLocation={eventLocation}
-          setEventLocation={setEventLocation}
-          eventDescription={eventDescription}
-          setEventDescription={setEventDescription}
-          eventImage={eventImage}
-          setEventImage={setEventImage}
-          addNewEvent={addNewEvent}
+          eventName={formState.eventName}
+          eventLocation={formState.eventLocation}
+          eventDescription={formState.eventDescription}
+          eventImage={formState.eventImage}
+          dispatchEvent={dispatchEvent}
         />
         
         <button type="submit" className="add-event-button" onClick={() => addNewEvent()}>Add</button>

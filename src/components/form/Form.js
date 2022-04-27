@@ -1,7 +1,6 @@
 import React from 'react'
 
-const Form = ({eventName, setEventName, eventLocation, setEventLocation, eventDescription, setEventDescription, 
-              eventImage, setEventImage }) => {
+const Form = ({eventName, eventLocation, eventDescription, eventImage, dispatchEvent }) => {
   return (
     <div className="add-new-event-whole-card">
 
@@ -15,7 +14,7 @@ const Form = ({eventName, setEventName, eventLocation, setEventLocation, eventDe
           id="name"
           className="inputField"
           value={eventName}
-          onChange={(e) => setEventName(e.target.value)}
+          onChange={(e) => dispatchEvent({type: 'eventName', payload: e.target.value})}
         />
       </div>
 
@@ -27,7 +26,7 @@ const Form = ({eventName, setEventName, eventLocation, setEventLocation, eventDe
           id="location"
           className="inputField"
           value={eventLocation}
-          onChange={(e) => setEventLocation(e.target.value)}
+          onChange={(e) => dispatchEvent({type: 'eventLocation', payload: e.target.value})}
         />
       </div>
 
@@ -39,7 +38,7 @@ const Form = ({eventName, setEventName, eventLocation, setEventLocation, eventDe
           id="description"
           className="inputField"
           value={eventDescription}
-          onChange={(e) => setEventDescription(e.target.value)}
+          onChange={(e) => dispatchEvent({type: 'eventDescription', payload: e.target.value})}
         />
       </div>
 
@@ -51,7 +50,7 @@ const Form = ({eventName, setEventName, eventLocation, setEventLocation, eventDe
           id="image"
           className="inputField"
           value={eventImage}
-          onChange={(e) => setEventImage(e.target.value)}
+          onChange={(e) => dispatchEvent({type: 'eventImage', payload: e.target.value})}
         />
       </div>
 

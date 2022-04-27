@@ -4,6 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { updateEvent } from "../../redux/actions/actions";
 import "../updateEvent/updateEvent.css";
 import Form from "../../components/form/Form";
+import { useReducer } from "react";
+
 
 const UpdateEvent = () => {
 
@@ -13,23 +15,42 @@ const UpdateEvent = () => {
   const getLocation = useLocation();
   const { getEvent } = getLocation.state || {};
 
-  const [eventName, setEventName] = useState(getEvent.name);
-  const [eventLocation, setEventLocation] = useState(getEvent.location);
-  const [eventDescription, setEventDescription] = useState(getEvent.description);
-  const [eventImage, setEventImage] = useState(getEvent.image);
+  const initialFormState = {
+    eventName: getEvent.name,
+    eventLocation: getEvent.location,
+    eventDescription: getEvent.description,
+    eventImage: getEvent.image,
+  }
 
-  const [event, setEvent] = useState(getLocation.state);
+  const formReducer = (state, action) => {
+    switch(action.type){
+      case 'eventName':
+        return { ...state, eventName: action.payload}
+      case 'eventLocation':
+        return { ...state, eventLocation: action.payload}
+      case 'eventDescription':
+        return { ...state, eventDescription: action.payload}
+      case 'eventImage':
+        return { ...state, eventImage: action.payload}
+  
+      default:
+        return state;
+    }
+  }
+  
+  const [formState, dispatchEvent] = useReducer(formReducer, initialFormState)
+  const [event, setEvent] = useState(formState);
 
 
   useEffect(() => {
     setEvent({
       id: getEvent.id,
-      name: eventName,
-      location: eventLocation,
-      description: eventDescription,
-      image: eventImage,
+      name: formState.eventName,
+      location: formState.eventLocation,
+      description: formState.eventDescription,
+      image: formState.eventImage,
     });
-  }, [getEvent.id, eventName, eventDescription, eventImage, eventLocation]);
+  }, [getEvent.id, formState.eventName, formState.eventDescription, formState.eventImage, formState.eventLocation]);
 
 
   const editEvent = () => {
@@ -49,15 +70,12 @@ const UpdateEvent = () => {
         <div className="line"></div>
 
         <Form
-          eventName={eventName}
-          setEventName={setEventName}
-          eventLocation={eventLocation}
-          setEventLocation={setEventLocation}
-          eventDescription={eventDescription}
-          setEventDescription={setEventDescription}
-          eventImage={eventImage}
-          setEventImage={setEventImage}
-          editEvent={editEvent}
+          eventName={formState.eventName}
+          eventLocation={formState.eventLocation}
+          eventDescription={formState.eventDescription}
+          eventImage={formState.eventImage}
+          dispatchEvent={dispatchEvent}
+
         />
 
         <button type="submit" className="update-event-button" onClick={() => editEvent()}>Update</button>
