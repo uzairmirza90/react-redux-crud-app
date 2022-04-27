@@ -24,14 +24,8 @@ const UpdateEvent = () => {
 
   const formReducer = (state, action) => {
     switch(action.type){
-      case 'eventName':
-        return { ...state, eventName: action.payload}
-      case 'eventLocation':
-        return { ...state, eventLocation: action.payload}
-      case 'eventDescription':
-        return { ...state, eventDescription: action.payload}
-      case 'eventImage':
-        return { ...state, eventImage: action.payload}
+      case 'EVENT':
+        return { ...state, [action.payload.key]: action.payload.value}
   
       default:
         return state;
@@ -39,6 +33,7 @@ const UpdateEvent = () => {
   }
   
   const [formState, dispatchEvent] = useReducer(formReducer, initialFormState)
+  
   const [event, setEvent] = useState(formState);
 
 

@@ -14,7 +14,7 @@ const Form = ({eventName, eventLocation, eventDescription, eventImage, dispatchE
           id="name"
           className="inputField"
           value={eventName}
-          onChange={(e) => dispatchEvent({type: 'eventName', payload: e.target.value})}
+          onChange={(e) => dispatchEvent({type: 'EVENT', payload: {key: 'eventName', value: e.target.value}})}
         />
       </div>
 
@@ -26,7 +26,7 @@ const Form = ({eventName, eventLocation, eventDescription, eventImage, dispatchE
           id="location"
           className="inputField"
           value={eventLocation}
-          onChange={(e) => dispatchEvent({type: 'eventLocation', payload: e.target.value})}
+          onChange={(e) => dispatchEvent({type: 'EVENT', payload: {key: 'eventLocation', value: e.target.value}})}
         />
       </div>
 
@@ -38,7 +38,7 @@ const Form = ({eventName, eventLocation, eventDescription, eventImage, dispatchE
           id="description"
           className="inputField"
           value={eventDescription}
-          onChange={(e) => dispatchEvent({type: 'eventDescription', payload: e.target.value})}
+          onChange={(e) => dispatchEvent({type: 'EVENT', payload: {key: 'eventDescription', value: e.target.value}})}
         />
       </div>
 
@@ -50,7 +50,7 @@ const Form = ({eventName, eventLocation, eventDescription, eventImage, dispatchE
           id="image"
           className="inputField"
           value={eventImage}
-          onChange={(e) => dispatchEvent({type: 'eventImage', payload: e.target.value})}
+          onChange={(e) => dispatchEvent({type: 'EVENT', payload: {key: 'eventImage', value: e.target.value}})}
         />
       </div>
 
