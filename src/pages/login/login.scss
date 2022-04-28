@@ -1,0 +1,21 @@
+@mixin flex($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+$marginTop: 60px;
+
+.login-form {
+    margin-top: $marginTop;
+    width: 100%;
+    gap: 20px;
+    @include flex(column);
+}
+
+.line {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
